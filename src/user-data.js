@@ -17,9 +17,9 @@ class userData extends Component{
         super(props);
 
         this.state = {
-            clase1: '',
-            clase2: '',
-            clase3: '',
+            clase1: 'Clase 1',
+            clase2: 'Clase 2',
+            clase3: 'Clase 3',
             notaP1C1: 0,
             notaP2C1: 0,
             notaP1C2: 0,
@@ -31,89 +31,82 @@ class userData extends Component{
 
     }
 
-    SimpleTable= ()=> {
-
-        const styles = theme => ({
-            root: {
-              width: '100%',
-              marginTop: theme.spacing.unit * 3,
-              overflowX: 'auto',
-            },
-            table: {
-              minWidth: 700,
-            },
-          });
-          
-          let id = 0;
-          function createData(name, parcial1, parcial2) {
-            id += 1;
-            return { name, parcial1, parcial2 };
-          }
-
-         const rows = [
-            createData(this.state.clase1, this.state.notaP1C1, this.state.notaP2C1),
-            createData(this.state.clase2, this.state.notaP1C2, this.state.notaP2C2),
-            createData(this.state.clase3, this.state.notaP1C3, this.state.notaP2C3),
-          ];
-          
-        return (
-            <div>
-          <Paper >
-            <Table >
-              <TableHead>
-                <TableRow>
-                  <TableCell align="right">Nombre de Clase</TableCell>
-                  <TableCell align="right">Parcial 1</TableCell>
-                  <TableCell align="right">Parcial 2</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {/* {rows.map(row => (
-                  <TableRow key={row.id}>
-                    <TableCell component="th" scope="row">
-                      {row.name}
-                    </TableCell>
-                    <TableCell align="right">{row.name}</TableCell>
-                    <TableCell align="right">{row.parcial1}</TableCell>
-                    <TableCell align="right">{row.parcial2}</TableCell>
-                  </TableRow>
-                ))} */}
-              </TableBody>
-            </Table>
-          </Paper>
-          </div>
-        );
-      }
-
     handleClick = ()=> {
 
         console.log('Gello');
-        this.SimpleTable();
+        
+        this.setState({
+            clase1: 'Clase 1',
+            clase2: 'Clase 2',
+            clase3: 'Clase 3',
+            notaP1C1: 0,
+            notaP2C1: 0,
+            notaP1C2: 0,
+            notaP2C2: 0,
+            notaP1C3: 0,
+            notaP2C3: 0
+        })
+    }
+
+    handleChangeC1 = (e)=> {
+        this.setState({clase1: e.target.value});
+    }
+
+    handleChangeC1P1 = (e)=> {
+        this.setState({notaP1C1: e.target.value});
+    }
+
+    handleChangeC1P2 = (e)=> {
+        this.setState({notaP2C1: e.target.value});
+    }
+
+    handleChangeC2 = (e)=> {
+        this.setState({clase2: e.target.value});
+    }
+
+    handleChangeC2P1 = (e)=> {
+        this.setState({notaP1C2: e.target.value});
+    }
+
+    handleChangeC2P2 = (e)=> {
+        this.setState({notaP2C2: e.target.value});
+    }
+
+    handleChangeC3 = (e)=> {
+        this.setState({clase3: e.target.value});
+    }
+
+    handleChangeC3P1 = (e)=> {
+        this.setState({notaP1C3: e.target.value});
+    }
+
+    handleChangeC3P2 = (e)=> {
+        this.setState({notaP2C3: e.target.value});
     }
 
     render(){
 
         return(
             <div>
-                <TextField   placeholder="Clase 1"> </TextField>    
+                <TextField   placeholder="Clase 1" onChange = {this.handleChangeC1}> </TextField>    
                 &nbsp;
-                <TextField  placeholder="Parcial 1 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 1 Nota" onChange = {this.handleChangeC1P1} > </TextField> 
                 &nbsp;
-                <TextField  placeholder="Parcial 2 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 2 Nota" onChange = {this.handleChangeC1P2} > </TextField> 
                 <br/>
 
-                <TextField   placeholder="Clase 2"> </TextField>    
+                <TextField   placeholder="Clase 2" onChange = {this.handleChangeC2} > </TextField>    
                 &nbsp;
-                <TextField  placeholder="Parcial 1 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 1 Nota" onChange = {this.handleChangeC2P1}> </TextField> 
                 &nbsp;
-                <TextField  placeholder="Parcial 2 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 2 Nota" onChange = {this.handleChangeC2P2} > </TextField> 
                 <br/>
 
-                <TextField   placeholder="Clase 3"> </TextField>    
+                <TextField   placeholder="Clase 3" onChange = {this.handleChangeC3} > </TextField>    
                 &nbsp;
-                <TextField  placeholder="Parcial 1 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 1 Nota" onChange = {this.handleChangeC3P1} > </TextField> 
                 &nbsp;
-                <TextField  placeholder="Parcial 2 Nota"> </TextField> 
+                <TextField  placeholder="Parcial 2 Nota" onChange = {this.handleChangeC3P2} > </TextField> 
 
                 <br/>
                 <br/>
@@ -122,8 +115,30 @@ class userData extends Component{
                     Guardar
                 </Button>
 
-            
-
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="right">Nombre de Clase</TableCell>
+                        <TableCell align="right">Parcial 1</TableCell>
+                        <TableCell align="right">Parcial 2</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableRow>
+                        <TableCell align="right">{this.state.clase1}</TableCell>
+                        <TableCell align="right">{this.state.notaP1C1}</TableCell>
+                        <TableCell align="right">{this.state.notaP2C1}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell align="right">{this.state.clase2}</TableCell>
+                        <TableCell align="right">{this.state.notaP1C2}</TableCell>
+                        <TableCell align="right">{this.state.notaP2C2}</TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell align="right">{this.state.clase3}</TableCell>
+                        <TableCell align="right">{this.state.notaP1C3}</TableCell>
+                        <TableCell align="right">{this.state.notaP2C3}</TableCell>
+                    </TableRow>
+                </TableBody>
             </div>    
         );
     }
